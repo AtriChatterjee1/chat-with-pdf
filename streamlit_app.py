@@ -22,7 +22,7 @@ def load_data():
         docs = reader.load_data()
         # llm = OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are an expert o$
         # index = VectorStoreIndex.from_documents(docs)
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo  ", temperature=0.5, system_prompt="You are an expert on the Chaintune software and your job is to answer technical questions. Assume that all questions are related to the Chaintune. Keep your answers technical and based on facts – do not hallucinate features."))
+        service_context = ServiceContext.from_defaults(llm=LlamaAPI(api_key=api_key))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
