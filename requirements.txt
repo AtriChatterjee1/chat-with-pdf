@@ -4,6 +4,7 @@ langchain
 llama-index
 llama-index-llms-openai
 llama-index-llms-llama-api
+llama-index-embeddings-openai
 nltk
 pypdf
 PyMuPDF
