@@ -3,6 +3,9 @@ import openai
 from llama_index.llms.llama_api import LlamaAPI
 from llama_index.llms.openai import OpenAI
 from llama_index.embeddings.openai import OpenAIEmbedding
+from sentence_transformers import SentenceTransformer
+from langchain_community.embeddings.sentence_transformer import (
+    SentenceTransformerEmbeddings,)
 try:
   from llama_index import VectorStoreIndex, ServiceContext, Document, SimpleDirectoryReader
 except ImportError:
@@ -27,7 +30,7 @@ def load_data():
         # index = VectorStoreIndex.from_documents(docs)
         # service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo ", temperature=0.5, system_prompt="You are an expert on the Chaintune software and your job is to answer technical questions. Assume that all questions are related to the Chaintune. Keep your answers technical and based on facts – do not hallucinate features."))
         service_context = ServiceContext.from_defaults(llm=LlamaAPI(api_key=api_key))
-        index = VectorStoreIndex.from_documents(docs, service_context=service_context, embed_model=OpenAIEmbedding())
+        index = VectorStoreIndex.from_documents(docs, service_context=service_context, embed_model=SentenceTransformer('all-MiniLM-L6-v2'))
         return index
 
 index = load_data()
