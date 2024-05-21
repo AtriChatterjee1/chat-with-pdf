@@ -5,6 +5,7 @@ llama-index
 llama-index-llms-openai
 llama-index-llms-llama-api
 llama-index-embeddings-openai
+sentence-transformers
 nltk
 pypdf
 PyMuPDF
